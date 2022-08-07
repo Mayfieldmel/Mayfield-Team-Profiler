@@ -18,6 +18,7 @@ promptEmployee()
       .then(dataObj => {
         answersArr.push(dataObj);
         console.log(answersArr);
+        return answersArr
       })
     // if user adds an intern
   } else if (answersObj.nextMove == "Intern") {
@@ -26,6 +27,7 @@ promptEmployee()
       .then(dataObj => {
         answersArr.push(dataObj);
         console.log(answersArr);
+        return answersArr
       })
     // if user is done adding team members
   } else if (answersObj.nextMove == "I am done profiling") {
