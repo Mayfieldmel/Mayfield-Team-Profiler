@@ -1,7 +1,8 @@
-const fs = require("fs");
 const inquirer = require("inquirer");
 const Employee = require("./lib/Employee");
-const questions = require("./src/questions");
+const questions = require("./utils/questions");
+const generatePage = require('./src/html-template');
+const writeToFile = require("./utils/generateHTML");
 
 // initialize app
 // prompt general employee questions
@@ -31,12 +32,15 @@ promptEmployee()
       })
     // if user is done adding team members
   } else if (answersObj.nextMove == "I am done profiling") {
-    generateHTML(answersArr)
+      console.log(answersArr)
+      
+      writeToFile(generatePage(answersArr));
     // if no answer is picked - should not happen bc i validated list questions
   } else {
     console.log("Error: try again!")
   }
 })
+
 
 // prompt general employee questions function
 function promptEmployee() {
@@ -82,7 +86,4 @@ function promptIntern(answers) {
     })
 }
 
-// write/generate HTML file
-function generateHTML() {
-  console.log("generate HTML");
-}
+
