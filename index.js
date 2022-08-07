@@ -1,84 +1,57 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const Employee = require("./lib/Employee");
+const questions = require("./src/questions");
 
-const employeeQuestions = [
-  {
-    type: "input",
-    name: "name",
-    message: "What is the employee's name?",
-    validate: nameInput => {
-      if (nameInput) {
-        return true;
-      } else {
-        console.log('Please enter a name!');
-        return false;
-      }
-    }
-  },
-  {
-    type: "input",
-    name: "id",
-    message: "What is the employee's ID number?",
-    validate: idInput => {
-      if (idInput) {
-        return true;
-      } else {
-        console.log('Please enter an id!');
-        return false;
-      }
-    }
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "What is the employee's email?",
-    validate: emailInput => {
-      if (emailInput) {
-        return true;
-      } else {
-        console.log('Please enter an email address!');
-        return false;
-      }
-    }
-  },
-];
 
 function promptEmployee() {
-  return inquirer.prompt(employeeQuestions);
+  return inquirer.prompt(questions.employee);
 }
 
 function promptManager(answers) {
   return inquirer
-    .prompt([
-      {
-        type: "input",
-        name: "office",
-        message: "what is the Manager's office number?",
-      },
-      {
-        type: "list",
-        name: "next",
-        message: "Add a team member:",
-        choices: ["Engineer", "Intern", "I am done profiling"]
-      }
-    ])
+    .prompt(questions.manager)
     .then((answer) => {
       const answersObj = answers;
       answersObj.officeNumber = answer.office;
-      console.log(answersObj);
+      answersObj.nextMove = answer.next;
+      console.log(answersObj)
+      return answersObj;
     })
-    .then()
 }
 
-function init() {
+function promptEngineer(answers) {
+  return inquirer
+    .prompt(questions.engineer)
+    .then((answer) => {
+      const answersObj = answers;
+      answersObj.github = answer.github;
+      answersObj.nextMove = answer.next;
+      console.log(answersObj)
+    
+      return answersObj;
+    })
+}
+
   promptEmployee()
-    .then((answers) => {
-      promptManager(answers);
-    })
+    .then(answers => promptManager(answers))
     .then((answersObj) => {
-      console.log(answersObj);
-    });
-}
+      const answersArr = [answersObj]
+      if (answersObj.nextMove == "Engineer") {
+        promptEmployee(answersArr)
+          .then(data => promptEngineer(data))
+          .then(dataObj => {
+            answersArr.push(dataObj);
+            console.log(answersArr);
+          })
+      }
+      ;
+    })
+  //   .then(answersObj => {
+  //   if (answer.next == "Engineer") {
+  //     return promptEngineer(answersObj)
+  //   } else if(answer.next == "Intern") {
+  //     return promptIntern(answersObj)
+  //   }
+  // })
 
-init();
