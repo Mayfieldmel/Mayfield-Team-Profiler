@@ -7,3 +7,8 @@ test("create intern object", () => {
     expect(intern.email).toBe("dave@gmail.com");
     expect(intern.school).toBe("UNC");
 })
+
+test("get interns's github username", () => {
+    const intern = new Intern('Dave', '89523', 'dave@gmail.com', 'UNC');
+    expect(intern.getSchool()).toBe('UNC');
+})
