@@ -15,11 +15,12 @@ test("gets employee's name", () => {
 
     expect(employee.getName()).toBe("Dave");
 });
-// test("gets employee's id", () => {
-//     const employee = new Employee('Dave', '89523', 'dave@gmail.com');
 
-//     expect(employee.getId()).toEqual(expect.any(Number));
-// });
+test("gets employee's id", () => {
+    const employee = new Employee('Dave', '89523', 'dave@gmail.com');
+
+    expect(employee.getId()).toEqual(expect.any(Number));
+});
 // test("gets employee's name", () => {
 //     const employee = new Employee('Dave', '89523', 'dave@gmail.com');
 

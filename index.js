@@ -21,8 +21,6 @@ inquirer
     }
 ])
   .then(({name, id, email}) => {
-    // const {name, id, email} = answers
     const employee = new Employee(name, id, email);
-    // console.log(answers)
     console.log(employee);
   })
