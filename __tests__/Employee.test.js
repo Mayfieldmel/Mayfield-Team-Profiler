@@ -1,5 +1,3 @@
-
-const { doesNotMatch } = require('assert');
 const Employee = require('../lib/Employee.js');
 
 test('creates employee object', () => {
