@@ -51,6 +51,14 @@ questions = {
       name: "next",
       message: "Add a team member:",
       choices: ["Engineer", "Intern", "I am done profiling"],
+      validate: (nextChoice) => {
+        if (nextChoice) {
+          return true;
+        } else {
+          console.log("Please enter select an option!");
+          return false;
+        }
+      },
     },
   ],
   engineer: [
@@ -64,6 +72,14 @@ questions = {
       name: "next",
       message: "Add a team member:",
       choices: ["Engineer", "Intern", "I am done profiling"],
+      validate: (nextChoice) => {
+        if (nextChoice) {
+          return true;
+        } else {
+          console.log("Please enter select an option!");
+          return false;
+        }
+      },
     },
   ],
   intern: [
@@ -77,6 +93,14 @@ questions = {
       name: "next",
       message: "Add a team member:",
       choices: ["Engineer", "Intern", "I am done profiling"],
+      validate: (nextChoice) => {
+        if (nextChoice) {
+          return true;
+        } else {
+          console.log("Please enter select an option!");
+          return false;
+        }
+      },
     },
   ],
 };
