@@ -21,6 +21,6 @@ inquirer
     }
 ])
   .then(({name, id, email}) => {
-    const employee = new Employee(name, id, email);
-    console.log(employee);
+    // const employee = new Manager(name, id, email);
+    // console.log(employee);
   })
