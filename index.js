@@ -22,6 +22,6 @@ inquirer
     }
 ])
   .then(answers => {
-    console.log(aswers);
-  })
+    console.log(answers);
+  });
 };
