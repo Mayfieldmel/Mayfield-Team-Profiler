@@ -8,7 +8,12 @@ test("create intern object", () => {
     expect(intern.school).toBe("UNC");
 })
 
-test("get interns's github username", () => {
+test("get intern's github username", () => {
     const intern = new Intern('Dave', '89523', 'dave@gmail.com', 'UNC');
     expect(intern.getSchool()).toBe('UNC');
+})
+
+test("get intern's github username", () => {
+    const intern = new Intern('Dave', '89523', 'dave@gmail.com', 'UNC');
+    expect(intern.getRole()).toBe('Intern');
 })

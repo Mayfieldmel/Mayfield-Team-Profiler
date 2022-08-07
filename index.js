@@ -2,6 +2,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const Employee = require("./lib/Employee");
 
+promptEmployee() {
 inquirer
   .prompt([
     {
@@ -20,7 +21,7 @@ inquirer
       message: "What is the employee's email?",
     }
 ])
-  .then(({name, id, email}) => {
-    // const employee = new Manager(name, id, email);
-    // console.log(employee);
+  .then(answers => {
+    console.log(aswers);
   })
+};
