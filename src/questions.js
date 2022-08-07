@@ -66,6 +66,19 @@ questions = {
       choices: ["Engineer", "Intern", "I am done profiling"],
     },
   ],
+  intern: [
+    {
+      type: "input",
+      name: "school",
+      message: "What is the intern's school name?",
+    },
+    {
+      type: "list",
+      name: "next",
+      message: "Add a team member:",
+      choices: ["Engineer", "Intern", "I am done profiling"],
+    },
+  ],
 };
 
 module.exports = questions;

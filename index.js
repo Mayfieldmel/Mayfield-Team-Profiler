@@ -3,7 +3,29 @@ const inquirer = require("inquirer");
 const Employee = require("./lib/Employee");
 const questions = require("./src/questions");
 
-
+promptEmployee()
+.then(answers => promptManager(answers))
+.then((answersObj) => {
+  const answersArr = [answersObj]
+  if (answersObj.nextMove == "Engineer") {
+    promptEmployee(answersArr)
+      .then(data => promptEngineer(data))
+      .then(dataObj => {
+        answersArr.push(dataObj);
+        console.log(answersArr);
+      })
+  } else if (answersObj.nextMove == "Intern") {
+    promptEmployee(answersArr)
+      .then(data => promptIntern(data))
+      .then(dataObj => {
+        answersArr.push(dataObj);
+        console.log(answersArr);
+      })
+  } else if (answersObj.nextMove == "I am done profiling") {
+    generateHTML(answersArr)
+  }
+  
+})
 function promptEmployee() {
   return inquirer.prompt(questions.employee);
 }
@@ -33,25 +55,19 @@ function promptEngineer(answers) {
     })
 }
 
-  promptEmployee()
-    .then(answers => promptManager(answers))
-    .then((answersObj) => {
-      const answersArr = [answersObj]
-      if (answersObj.nextMove == "Engineer") {
-        promptEmployee(answersArr)
-          .then(data => promptEngineer(data))
-          .then(dataObj => {
-            answersArr.push(dataObj);
-            console.log(answersArr);
-          })
-      }
-      ;
+function promptIntern(answers) {
+  return inquirer
+    .prompt(questions.intern)
+    .then((answer) => {
+      const answersObj = answers;
+      answersObj.school = answer.school;
+      answersObj.nextMove = answer.next;
+      console.log(answersObj)
+    
+      return answersObj;
     })
-  //   .then(answersObj => {
-  //   if (answer.next == "Engineer") {
-  //     return promptEngineer(answersObj)
-  //   } else if(answer.next == "Intern") {
-  //     return promptIntern(answersObj)
-  //   }
-  // })
+}
 
+function generateHTML() {
+  console.log("generate HTML");
+}
