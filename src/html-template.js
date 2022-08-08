@@ -6,7 +6,7 @@ const generateManagerCard = managerData => {
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">${managerData.name}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+            <h6 class="card-subtitle mb-2 text-muted">${managerData.getRole()}</h6>
             <p class="card-text">ID: ${managerData.id}</p>
             <a href="mailto:${managerData.email}" class="card-link">Email: ${managerData.email}</a>
             <p class="card-text">Office number: ${managerData.officeNumber}</p>

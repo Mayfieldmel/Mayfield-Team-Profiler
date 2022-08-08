@@ -1,89 +1,117 @@
 const inquirer = require("inquirer");
-const Employee = require("./lib/Employee");
 const questions = require("./utils/questions");
-const generatePage = require('./src/html-template');
+const generatePage = require("./src/html-template");
 const writeToFile = require("./utils/generateHTML");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+
+var teamArr = [];
 
 // initialize app
-// prompt general employee questions
-promptEmployee()
-  // prompt manager specific questions
-.then(answers => promptManager(answers))
-  // add employee & manager answers to an array
-.then((answersObj) => {
-  const answersArr = [answersObj]
-    // if user adds an engineer
-  if (answersObj.nextMove == "Engineer") {
-    promptEmployee(answersArr)
-      .then(data => promptEngineer(data))
-      .then(dataObj => {
-        answersArr.push(dataObj);
-        console.log(answersArr);
-        return answersArr
-      })
-    // if user adds an intern
-  } else if (answersObj.nextMove == "Intern") {
-    promptEmployee(answersArr)
-      .then(data => promptIntern(data))
-      .then(dataObj => {
-        answersArr.push(dataObj);
-        console.log(answersArr);
-        return answersArr
-      })
-    // if user is done adding team members
-  } else if (answersObj.nextMove == "I am done profiling") {
-      console.log(answersArr)
-      
-      writeToFile(generatePage(answersArr));
-    // if no answer is picked - should not happen bc i validated list questions
-  } else {
-    console.log("Error: try again!")
-  }
+startProfile();
+// prompt manager questions
+promptManager()
+//prompt next move
+.then(() => promptNext());
+// Putting / Creating a new Function
+/*
+
+
+
+.then(objectsArr => {
+  console.log("objectsArr:" + objectsArr);
 })
+*/
 
+// start generator
+function startProfile() {
+  console.log("Welcome to the Mayfield Team Profiler!");
+  console.log("Lets start by generating the Team Manager profile.");
+}
 
-// prompt general employee questions function
-function promptEmployee() {
-  return inquirer.prompt(questions.employee);
+// prompt user to add new team member
+function promptNext() {
+  return inquirer.prompt(questions.nextMove)
+  .then((answer) => {
+    // if user adds an engineer
+    if (answer.next == "Engineer") {
+      promptEngineer(answersArr)
+        .then(dataObj => {
+          answersArr.push(dataObj);
+          console.log(answersArr);
+          return answersArr
+        })
+      // if user adds an intern
+    } else if (answer.next == "Intern") {
+      promptIntern(answersArr)
+        .then(dataObj => {
+          answersArr.push(dataObj);
+          console.log(answersArr);
+          return answersArr
+        })
+      // if user is done adding team members
+    } else if (answer.next == "I am done profiling") {
+        console.log(teamArr)
+        writeToFile(generatePage(teamArr));
+      // if no answer is picked - should not happen bc i validated list questions
+    } else {
+      console.log("Error: try again!")
+    }
+  })
 }
 
 // prompt manager specific questions function
-function promptManager(answers) {
-  return inquirer
-    .prompt(questions.manager)
-    .then((answer) => {
-      const answersObj = answers;
-      answersObj.officeNumber = answer.office;
-      answersObj.nextMove = answer.next;
-      console.log(answersObj)
-      return answersObj;
-    })
+function promptManager() {
+  return inquirer.prompt(questions.manager).then((answers) => {
+    console.log(answers);
+    const {name, id, email, office} = answers
+    // create the new instance
+    let manager = new Manager(name, id, email, office);
+    console.log(manager)
+    // push manager to team array
+    teamArr.push(manager);
+   console.log(teamArr)
+  });
 }
 
 // prompt engineer specific questions function
-function promptEngineer(answers) {
-  return inquirer
-    .prompt(questions.engineer)
-    .then((answer) => {
-      const answersObj = answers;
-      answersObj.github = answer.github;
-      answersObj.nextMove = answer.next;
-      console.log(answersObj)
-      return answersObj;
-    })
+function promptEngineer() {
+  return inquirer.prompt(questions.engineer).then((answers) => {
+    console.log(answers);
+    const {name, id, email, office} = answers
+    // create the new instance
+    let engineer = new Engineer(name, id, email, office);
+    console.log(engineer)
+    // push engineer to team array
+    teamArr.push(engineer);
+   console.log(teamArr)
+  });
 }
 
 // prompt intern specific questions
-function promptIntern(answers) {
-  return inquirer
-    .prompt(questions.intern)
-    .then((answer) => {
-      const answersObj = answers;
-      answersObj.school = answer.school;
-      answersObj.nextMove = answer.next;
-      console.log(answersObj)
-      return answersObj;
-    })
+function promptIntern() {
+  return inquirer.prompt(questions.intern).then((answers) => {
+    console.log(answers);
+    const {name, id, email, office} = answers
+    // create the new instance
+    let intern = new Intern(name, id, email, office);
+    console.log(intern)
+    // push intern to team array
+    teamArr.push(manager);
+   console.log(teamArr)
+  });
 }
 
+// Create a new Object Insatnace
+// let testing = new Manager("Test", "test@company.net", 123);
+//console.log(testing.getRole());
 
+function buildCards() {
+  // loop though our teamArr
+
+  // check what kinda OBJECT do we have (hint look at getRole() )
+  if (teamArr[i].getRole() == "Manager") {
+    generateManagerCard(OBJECT);
+  }
+}
