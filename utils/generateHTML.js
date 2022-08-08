@@ -1,9 +1,9 @@
 const fs = require("fs");
-  
+
 // write html file using promise
 const writeToFile = html => {
   return new Promise((resolve, reject) => {
-    fs.writeFile("./dist/profile.html", html, err => {
+    fs.writeFile("./dist/team-profile.html", html, err => {
      // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
      if (err) {
       reject(err);

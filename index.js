@@ -38,6 +38,7 @@ function promptNext() {
     } else if (answer.next == "I am done profiling") {
         console.log(teamArr)
         writeToFile(generatePage(teamArr));
+        // buildCards();
       // if no answer is picked - should not happen bc i validated list questions
     } else {
       console.log("Error: try again!")
@@ -52,6 +53,7 @@ function promptManager() {
     const {name, id, email, office} = answers
     // create the new instance
     let manager = new Manager(name, id, email, office);
+    manager.title = manager.getRole();
     console.log(manager)
     // push manager to team array
     teamArr.push(manager);
@@ -66,6 +68,7 @@ function promptEngineer() {
     const {name, id, email, github} = answers
     // create the new instance
     let engineer = new Engineer(name, id, email, github);
+    engineer.title = engineer.getRole();
     console.log(engineer)
     // push engineer to team array
     teamArr.push(engineer);
@@ -81,6 +84,7 @@ function promptIntern() {
     const {name, id, email, school} = answers
     // create the new instance
     let intern = new Intern(name, id, email, school);
+    intern.title = intern.getRole();
     console.log(intern)
     // push intern to team array
     teamArr.push(intern);
@@ -88,16 +92,18 @@ function promptIntern() {
    promptNext();
   });
 }
-
-// Create a new Object Insatnace
-// let testing = new Manager("Test", "test@company.net", 123);
-//console.log(testing.getRole());
-
-function buildCards() {
-  // loop though our teamArr
-
-  // check what kinda OBJECT do we have (hint look at getRole() )
-  if (teamArr[i].getRole() == "Manager") {
-    generateManagerCard(OBJECT);
-  }
-}
+//    // loop though our teamArr
+// function buildCards(teamArr) {
+// const generateArr = teamArr.array.forEach(employee => {
+//   // check what kinda OBJECT)
+//   if (teamArr[i].getRole() == "Manager") {
+//      generateManagerCard(teamArr[i]);
+//    }
+//   if (teamArr[i].getRole() == "Engineer") {
+//      generateEngineerCard(teamArr[i]);
+//    }
+//   if (teamArr[i].getRole() == "Intern") {
+//      generateInternCard(teamArr[i]);
+//    }
+// });
+// }
