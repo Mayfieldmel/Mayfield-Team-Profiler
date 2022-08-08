@@ -14,15 +14,8 @@ startProfile();
 promptManager()
 //prompt next move
 .then(() => promptNext());
-// Putting / Creating a new Function
-/*
 
 
-
-.then(objectsArr => {
-  console.log("objectsArr:" + objectsArr);
-})
-*/
 
 // start generator
 function startProfile() {
@@ -34,22 +27,13 @@ function startProfile() {
 function promptNext() {
   return inquirer.prompt(questions.nextMove)
   .then((answer) => {
+    console.log(answer);
     // if user adds an engineer
     if (answer.next == "Engineer") {
-      promptEngineer(answersArr)
-        .then(dataObj => {
-          answersArr.push(dataObj);
-          console.log(answersArr);
-          return answersArr
-        })
+      promptEngineer()
       // if user adds an intern
     } else if (answer.next == "Intern") {
-      promptIntern(answersArr)
-        .then(dataObj => {
-          answersArr.push(dataObj);
-          console.log(answersArr);
-          return answersArr
-        })
+      promptIntern()
       // if user is done adding team members
     } else if (answer.next == "I am done profiling") {
         console.log(teamArr)
@@ -79,13 +63,14 @@ function promptManager() {
 function promptEngineer() {
   return inquirer.prompt(questions.engineer).then((answers) => {
     console.log(answers);
-    const {name, id, email, office} = answers
+    const {name, id, email, github} = answers
     // create the new instance
-    let engineer = new Engineer(name, id, email, office);
+    let engineer = new Engineer(name, id, email, github);
     console.log(engineer)
     // push engineer to team array
     teamArr.push(engineer);
-   console.log(teamArr)
+   console.log(teamArr);
+   promptNext();
   });
 }
 
@@ -93,13 +78,14 @@ function promptEngineer() {
 function promptIntern() {
   return inquirer.prompt(questions.intern).then((answers) => {
     console.log(answers);
-    const {name, id, email, office} = answers
+    const {name, id, email, school} = answers
     // create the new instance
-    let intern = new Intern(name, id, email, office);
+    let intern = new Intern(name, id, email, school);
     console.log(intern)
     // push intern to team array
-    teamArr.push(manager);
-   console.log(teamArr)
+    teamArr.push(intern);
+   console.log(teamArr);
+   promptNext();
   });
 }
 
