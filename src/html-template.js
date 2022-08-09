@@ -71,7 +71,7 @@ function buildCards(teamArr) {
 
 // generate HTML template
 module.exports = templateData=> {
-    const [managerData, ...employeeData] = templateData;
+    const [managerData, engineerData, internData] = templateData;
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -93,7 +93,8 @@ module.exports = templateData=> {
       <main class="container text-center">
         <div class="row align-items-center">
         ${generateManagerCard(managerData)}
-        ${employeeData.map(buildCards)}
+        ${engineerData.map(buildCards)}
+        ${internData.map(buildCards)}
         </div>
       </main>
     </body>
