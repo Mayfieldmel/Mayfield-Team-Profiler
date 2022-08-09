@@ -9,12 +9,12 @@ const generateManagerCard = managerData => {
         <div class="card-body">
             <div class="bg-primary py-2 text-white shadow-lg rounded-top">
                 <h5 class="card-title">${managerData.name}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">🍵${managerData.getRole()}</h6>
+                <h6 class="card-subtitle mb-2">🍵${managerData.getRole()}</h6>
             </div>
             <div class="shadow-lg p-3 mb-5 bg-body rounded-bottom">
-                <p class="card-text p-1 bg-light border">ID: ${managerData.id}</p>
-                <p class="p-1 bg-light border">Email: <a href="mailto:${managerData.email}" class="card-link">${managerData.email}</a></p>
-                <p class="card-text p-1 bg-light border">Office number: ${managerData.officeNumber}</p>
+                <p class="card-text bg-light border">ID: ${managerData.id}</p>
+                <p class= bg-light border">Email: <a href="mailto:${managerData.email}" class="card-link">${managerData.email}</a></p>
+                <p class="card-text bg-light border">Office number: ${managerData.officeNumber}</p>
             </div>
         </div>
     </div>
@@ -27,12 +27,12 @@ const generateEngineerCard = engineerData => {
         <div class="card-body">
             <div class="bg-primary py-2 text-white shadow-lg rounded-top">
                 <h5 class="card-title">${engineerData.name}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">👓${engineerData.getRole()}</h6>
+                <h6 class="card-subtitle mb-2">👓${engineerData.getRole()}</h6>
             </div>
             <div class="shadow-lg p-3 mb-5 bg-body rounded-bottom">
-                <p class="card-text p-1 bg-light border">ID: ${engineerData.id}</p>
-                <p class="p-1 bg-light border">Email: <a href="mailto:${engineerData.email}" class="card-link"> ${engineerData.email}</a></p>
-                <p class="p-1 bg-light border>Github: <a href="https://github.com/${engineerData.getGithub}" class="card-link"> ${engineerData.getGithub}</a>
+                <p class="card-text bg-light border">ID: ${engineerData.id}</p>
+                <p class= bg-light border">Email: <a href="mailto:${engineerData.email}" class="card-link"> ${engineerData.email}</a></p>
+                <p class= bg-light border>Github: <a href="https://github.com/${engineerData.getGithub()}" class="card-link"> ${engineerData.getGithub()}</a>
             </div>
         </div>
     </div>
@@ -45,12 +45,12 @@ const generateInternCard = internData => {
         <div class="card-body">
             <div class="bg-primary py-2 text-white shadow-lg rounded-top">
                 <h5 class="card-title">${internData.name}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">🧑‍🎓${internData.getRole()}</h6>
+                <h6 class="card-subtitle mb-2">🧑‍🎓${internData.getRole()}</h6>
             </div>
             <div class="shadow-lg p-3 mb-5 bg-body rounded-bottom">
-                <p class="card-text p-1 bg-light border">ID: ${internData.id}</p>
+                <p class="card-text bg-light border">ID: ${internData.id}</p>
                 <p class="bg-light border">Email: <a href="mailto:${internData.email}" class="card-link"> ${internData.email}</a><p>
-                <p class="card-text p-1 bg-light border">School: ${internData.getSchool}</p>
+                <p class="card-text bg-light border">School: ${internData.getSchool()}</p>
             </div>
         </div>
     </div>
@@ -59,38 +59,18 @@ const generateInternCard = internData => {
 
 // build employee cards
 function buildCards(teamArr) {
-    // loop though our teamArr
-    for (let i = 0; i < teamArr.length; i++) {
-     // check what kinda OBJECT)
-    //  if (teamArr[i].title == "Manager") {
-    //     generateManagerCard(teamArr[i]);
-    //   }
-     if (teamArr[i].title == "Engineer") {
-        generateEngineerCard(teamArr[i]);
+     // check what kinda OBJECT
+    if (teamArr.getRole() == "Engineer") {
+        return generateEngineerCard(teamArr);
       }
-     if (teamArr[i].title == "Intern") {
-        generateInternCard(teamArr[i]);
+      if (teamArr.getRole() == "Intern") {
+       return generateInternCard(teamArr);
       }
   };
-  }
-// function buildEngineerCards(engineerArr) {
-//     // loop though our engineerArr
-//     for (let i = 0; i < engineerArr.length; i++) {
-//      // check what kinda OBJECT)
-//      generateEngineerCard(engineerArr[i]);
-//       }
-//     }
-// function buildInternCards(internArr) {
-//     // loop though our engineerArr
-//     for (let i = 0; i < internArr.length; i++) {
-//      // check what kinda OBJECT)
-//      generateInternCard(internArr[i]);
-//       }
-//     }
   
 
 // generate HTML template
-module.exports = templateData => {
+module.exports = templateData=> {
     const [managerData, ...employeeData] = templateData;
     return `
     <!DOCTYPE html>
@@ -113,15 +93,10 @@ module.exports = templateData => {
       <main class="container text-center">
         <div class="row align-items-center">
         ${generateManagerCard(managerData)}
-        ${buildCards(employeeData)}
+        ${employeeData.map(buildCards)}
         </div>
       </main>
     </body>
     </html>
     `;
   }
-
-
-//   ${generateManagerCard(managerData)}
-//   ${buildEngineerCards(engineerData)}
-//   ${buildInternCards(internData)}
