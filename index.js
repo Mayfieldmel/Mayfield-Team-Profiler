@@ -38,7 +38,7 @@ function promptNext() {
     } else if (answer.next == "I am done profiling") {
         console.log(teamArr)
         writeToFile(generatePage(teamArr));
-        // buildCards();
+        // buildCardArr(teamArr);
       // if no answer is picked - should not happen bc i validated list questions
     } else {
       console.log("Error: try again!")
@@ -92,6 +92,32 @@ function promptIntern() {
    promptNext();
   });
 }
+
+   // loop though our teamArr
+  //  function buildCardArr(teamArr) {
+  //   const engineerCards = []
+  //   const internCards = []
+  //   for (let i = 0; i < teamArr.length; i++) {
+  //     // check what kinda OBJECT)
+  //     // if (teamArr[i].getRole() == "Manager") {
+  //     //    generateManagerCard(teamArr[i]);
+  //     //  }
+  //     if (teamArr[i].getRole() == "Engineer") {
+  //         engineerCards.push(teamArr[i]);
+  //      }
+  //     if (teamArr[i].getRole() == "Intern") {
+  //       internCards.push(teamArr[i]);
+  //      }
+  //   };
+  //   const cardArr = [];
+  //   cardArr.push(teamArr[0]);
+  //   cardArr.push(engineerCards);
+  //   cardArr.push(internCards);
+  //   console.log(cardArr);
+  //   writeToFile(generatePage(cardArr));
+  //   }
+
+  
 //    // loop though our teamArr
 // function buildCards(teamArr) {
 // const generateArr = teamArr.array.forEach(employee => {
