@@ -5,7 +5,7 @@ const Intern = require("../lib/Intern");
 // generate manager cards
 const generateManagerCard = managerData => {
     return `
-    <div class="card" style="width: 18rem;">
+    <div class="card border-0" style="width: 18rem;">
         <div class="card-body">
             <div class="bg-primary py-2 text-white shadow-lg rounded-top">
                 <h5 class="card-title">${managerData.name}</h5>
@@ -13,7 +13,7 @@ const generateManagerCard = managerData => {
             </div>
             <div class="shadow-lg p-3 mb-5 bg-body rounded-bottom">
                 <p class="card-text bg-light border">ID: ${managerData.id}</p>
-                <p class= bg-light border">Email: <a href="mailto:${managerData.email}" class="card-link">${managerData.email}</a></p>
+                <p class="card-text bg-light border">Email: <a href="mailto:${managerData.email}" class="card-link">${managerData.email}</a></p>
                 <p class="card-text bg-light border">Office number: ${managerData.officeNumber}</p>
             </div>
         </div>
@@ -23,7 +23,7 @@ const generateManagerCard = managerData => {
 // generate engineer cards
 const generateEngineerCard = engineerData => {
     return `
-    <div class="card" style="width: 18rem;">
+    <div class="card border-0" style="width: 18rem;">
         <div class="card-body">
             <div class="bg-primary py-2 text-white shadow-lg rounded-top">
                 <h5 class="card-title">${engineerData.name}</h5>
@@ -31,8 +31,8 @@ const generateEngineerCard = engineerData => {
             </div>
             <div class="shadow-lg p-3 mb-5 bg-body rounded-bottom">
                 <p class="card-text bg-light border">ID: ${engineerData.id}</p>
-                <p class= bg-light border">Email: <a href="mailto:${engineerData.email}" class="card-link"> ${engineerData.email}</a></p>
-                <p class= bg-light border>Github: <a href="https://github.com/${engineerData.getGithub()}" class="card-link"> ${engineerData.getGithub()}</a>
+                <p class="card-text bg-light border">Email: <a href="mailto:${engineerData.email}" class="card-link"> ${engineerData.email}</a></p>
+                <p class="card-text bg-light border">Github: <a href="https://github.com/${engineerData.getGithub()}" class="card-link"> ${engineerData.getGithub()}</a>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@ const generateEngineerCard = engineerData => {
 // generate intern cards
 const generateInternCard = internData => {
     return `
-    <div class="card" style="width: 18rem;">
+    <div class="card border-0" style="width: 18rem;">
         <div class="card-body">
             <div class="bg-primary py-2 text-white shadow-lg rounded-top">
                 <h5 class="card-title">${internData.name}</h5>
@@ -49,7 +49,7 @@ const generateInternCard = internData => {
             </div>
             <div class="shadow-lg p-3 mb-5 bg-body rounded-bottom">
                 <p class="card-text bg-light border">ID: ${internData.id}</p>
-                <p class="bg-light border">Email: <a href="mailto:${internData.email}" class="card-link"> ${internData.email}</a><p>
+                <p class="card-text bg-light border">Email: <a href="mailto:${internData.email}" class="card-link"> ${internData.email}</a><p>
                 <p class="card-text bg-light border">School: ${internData.getSchool()}</p>
             </div>
         </div>
