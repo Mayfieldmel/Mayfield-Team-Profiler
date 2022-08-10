@@ -1,8 +1,8 @@
 # Mayfield-Team-Profiler
 
-This repo houses the assets used to build the Mayfield Team Profiler, available at https://mayfieldmel.github.io/Mayfield-Team-Profiler/ .
+This repo houses the code used to build the Mayfield Team Profiler, available at https://mayfieldmel.github.io/Mayfield-Team-Profiler/ .
 
-![team-profiler-demo-short](#)
+![team-profiler-demo-short](./assets/images/Mayfield-Team-Profiler-Demo.gif)
 
 ## The Profiler
 
@@ -22,7 +22,7 @@ Clone the github repo to your computer. Then, initialize npm by typing ***npm in
 
 ## Usage
 
-See full-length demo at [https://watch.screencastify.com/v/pMKe2goKd4vImVYH3bQu](https://watch.screencastify.com/v/pMKe2goKd4vImVYH3bQu) .
+See full-length demo at [https://watch.screencastify.com/v/Iafga4f29HOOSi9lb2hS](https://watch.screencastify.com/v/Iafga4f29HOOSi9lb2hS) .
 
 ## Credits
 
