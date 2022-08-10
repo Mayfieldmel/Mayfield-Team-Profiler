@@ -32,7 +32,7 @@ const generateEngineerCard = engineerData => {
             <div class="shadow-lg p-3 mb-5 bg-body rounded-bottom">
                 <p class="card-text bg-light border">ID: ${engineerData.id}</p>
                 <p class="card-text bg-light border">Email: <a href="mailto:${engineerData.email}" class="card-link"> ${engineerData.email}</a></p>
-                <p class="card-text bg-light border">Github: <a href="https://github.com/${engineerData.getGithub()}" class="card-link"> ${engineerData.getGithub()}</a>
+                <p class="card-text bg-light border">Github: <a href="https://github.com/${engineerData.getGithub()}" target="_blank" class="card-link"> ${engineerData.getGithub()}</a>
             </div>
         </div>
     </div>
