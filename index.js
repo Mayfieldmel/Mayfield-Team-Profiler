@@ -6,15 +6,19 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-var teamArr = [];
+const teamArr = [];
 
 // initialize app
+const init = () => {
 startProfile();
 // prompt manager questions
 promptManager()
 //prompt next move
 .then(() => promptNext());
+};
 
+// call app
+init();
 
 
 // start generator
@@ -93,15 +97,12 @@ function promptIntern() {
   });
 }
 
-   // loop though our teamArr
+  // sort by employee type for organized display
    function buildCardArr(teamArr) {
     const engineerCards = []
     const internCards = []
+    // loop though our teamArr
     for (let i = 0; i < teamArr.length; i++) {
-      // check what kinda OBJECT)
-      // if (teamArr[i].getRole() == "Manager") {
-      //    generateManagerCard(teamArr[i]);
-      //  }
       if (teamArr[i].getRole() == "Engineer") {
           engineerCards.push(teamArr[i]);
        }
@@ -109,27 +110,14 @@ function promptIntern() {
         internCards.push(teamArr[i]);
        }
     };
+
+    // create array of sorted employees
     const cardArr = [];
-    cardArr.push(teamArr[0]);
-    cardArr.push(engineerCards);
-    cardArr.push(internCards);
-    console.log(cardArr);
+      cardArr.push(teamArr[0]);
+      cardArr.push(engineerCards);
+      cardArr.push(internCards);
+      console.log(cardArr);
+
+    // write file by interpolating the cardArr into the generatePage template
     writeToFile(generatePage(cardArr));
     }
-
-
-//    // loop though our teamArr
-// function buildCards(teamArr) {
-// const generateArr = teamArr.array.forEach(employee => {
-//   // check what kinda OBJECT)
-//   if (teamArr[i].getRole() == "Manager") {
-//      generateManagerCard(teamArr[i]);
-//    }
-//   if (teamArr[i].getRole() == "Engineer") {
-//      generateEngineerCard(teamArr[i]);
-//    }
-//   if (teamArr[i].getRole() == "Intern") {
-//      generateInternCard(teamArr[i]);
-//    }
-// });
-// }

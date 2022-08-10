@@ -71,6 +71,7 @@ function buildCards(teamArr) {
 
 // generate HTML template
 module.exports = templateData=> {
+    // deconstruct array by employee type
     const [managerData, engineerData, internData] = templateData;
     return `
     <!DOCTYPE html>
