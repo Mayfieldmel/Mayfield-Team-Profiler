@@ -22,7 +22,7 @@ Clone the github repo to your computer. Then, initialize npm by typing ***npm in
 
 ## Usage
 
-See full-length demo at [#](#) .
+See full-length demo at [https://watch.screencastify.com/v/pMKe2goKd4vImVYH3bQu](https://watch.screencastify.com/v/pMKe2goKd4vImVYH3bQu) .
 
 ## Credits
 

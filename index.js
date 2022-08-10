@@ -31,7 +31,6 @@ function startProfile() {
 function promptNext() {
   return inquirer.prompt(questions.nextMove)
   .then((answer) => {
-    console.log(answer);
     // if user adds an engineer
     if (answer.next == "Engineer") {
       promptEngineer()
@@ -40,8 +39,6 @@ function promptNext() {
       promptIntern()
       // if user is done adding team members
     } else if (answer.next == "I am done profiling") {
-        console.log(teamArr)
-        // writeToFile(generatePage(teamArr));
         buildCardArr(teamArr);
       // if no answer is picked - should not happen bc i validated list questions
     } else {
@@ -53,30 +50,24 @@ function promptNext() {
 // prompt manager specific questions function
 function promptManager() {
   return inquirer.prompt(questions.manager).then((answers) => {
-    console.log(answers);
     const {name, id, email, office} = answers
     // create the new instance
     let manager = new Manager(name, id, email, office);
     manager.title = manager.getRole();
-    console.log(manager)
     // push manager to team array
     teamArr.push(manager);
-   console.log(teamArr)
   });
 }
 
 // prompt engineer specific questions function
 function promptEngineer() {
   return inquirer.prompt(questions.engineer).then((answers) => {
-    console.log(answers);
     const {name, id, email, github} = answers
     // create the new instance
     let engineer = new Engineer(name, id, email, github);
     engineer.title = engineer.getRole();
-    console.log(engineer)
     // push engineer to team array
     teamArr.push(engineer);
-   console.log(teamArr);
    promptNext();
   });
 }
@@ -84,15 +75,12 @@ function promptEngineer() {
 // prompt intern specific questions
 function promptIntern() {
   return inquirer.prompt(questions.intern).then((answers) => {
-    console.log(answers);
     const {name, id, email, school} = answers
     // create the new instance
     let intern = new Intern(name, id, email, school);
     intern.title = intern.getRole();
-    console.log(intern)
     // push intern to team array
     teamArr.push(intern);
-   console.log(teamArr);
    promptNext();
   });
 }
