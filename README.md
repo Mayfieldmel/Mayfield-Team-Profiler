@@ -1,6 +1,6 @@
 # Mayfield-Team-Profiler
 
-This repo houses the code used to build the Mayfield Team Profiler, available at https://mayfieldmel.github.io/Mayfield-Team-Profiler/ .
+This repo houses the code used to build the Mayfield Team Profiler.
 
 ![team-profiler-demo-short](./assets/images/Mayfield-Team-Profiler-Demo-Short.gif)
 
